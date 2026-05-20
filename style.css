@@ -95,3 +95,51 @@ button:active {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ==========================================
+   [수정 및 추가] 2x2 격자형 답변 버튼 레이아웃
+   ========================================== */
+
+/* 1. 버튼들을 감싸는 부모 컨테이너를 2열 구조로 변경 */
+#answer-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 가로 공간을 정확히 1:1 비율로 2분할 */
+    gap: 12px;                      /* 버튼과 버튼 사이의 깔끔한 간격 지정 */
+    margin-top: 15px;
+}
+
+/* 2. 개별 답변 버튼 스타일링을 모던하고 깔끔하게 튜닝 */
+.ans-btn {
+    background: #32324d;
+    color: #e0e0e0;
+    border: 1px solid #444466;
+    padding: 18px 15px;             /* 모바일 터치가 편하도록 상하 여백 확보 */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;             /* 2x2 배치에 어울리도록 텍스트 중앙 정렬 */
+    
+    /* 부드러운 애니메이션 효과적용 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;               /* 글자 수 차이로 인한 버튼 크기 불균형 방지 */
+    transition: all 0.2s ease-in-out;
+}
+
+/* 3. 유저가 버튼에 마우스를 올렸을 때(Hover) 및 터치했을 때 시각 효과 */
+.ans-btn:hover {
+    background: linear-gradient(135deg, #4d4d75 0%, #3e3e5e 100%);
+    border-color: #7c4dff;          /* 하이라이트 포인트 컬러 */
+    color: #ffffff;
+    transform: translateY(-2px);    /* 살짝 위로 떠오르는 입체감 부여 */
+    box-shadow: 0 5px 15px rgba(124, 77, 255, 0.2);
+}
+
+/* 4. 클릭하는 순간 피드백 효과 */
+.ans-btn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
